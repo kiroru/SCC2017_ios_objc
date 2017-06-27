@@ -1,0 +1,23 @@
+# OSX
+.DS_Store
+
+# Subversion
+.svn
+**/.svn
+
+# Xcode Project
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/default.*
+**/*.xcodeproj/*
+!**/*.xcodeproj/project.pbxproj
+!**/*.xcodeproj/default.*
+
+# Xcode Workspace
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+
+# CocoaPod
+Pods/*
+Podfile.lock
+

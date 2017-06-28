@@ -13,21 +13,16 @@
 @property (nonatomic, strong) NSString* imageUrl;
 @property (nonatomic, strong) NSString* jname;
 @property (nonatomic, strong) NSString* ename;
-- (instancetype)initWithImageUrl:(NSString*)imageUrl
-                           jname:(NSString*)jname
-                           ename:(NSString*)ename;
+- (instancetype)initWithImageUrl:(NSString*)imageUrl jname:(NSString*)jname ename:(NSString*)ename;
 @end
 
 @implementation Item
 static NSString* BASE_URL = @"https://kiroru-inc.jp/share/scc2017/";
-- (instancetype)initWithImageUrl:(NSString *)imageUrl
-                           jname:(NSString *)jname
-                           ename:(NSString *)ename
+- (instancetype)initWithImageUrl:(NSString *)imageUrl jname:(NSString *)jname ename:(NSString *)ename
 {
     self = [super init];
     if (self) {
-        self.imageUrl =
-            [NSString stringWithFormat:@"%@%@", BASE_URL, imageUrl];
+        self.imageUrl = [NSString stringWithFormat:@"%@%@", BASE_URL, imageUrl];
         self.jname = jname;
         self.ename = ename;
     }
@@ -46,21 +41,12 @@ static NSString* BASE_URL = @"https://kiroru-inc.jp/share/scc2017/";
     [super viewDidLoad];
 
     _items = [@[] mutableCopy];
-    [_items addObject:[[Item alloc] initWithImageUrl:@"Japan.png"
-                                               jname:@"日本"
-                                               ename:@"Japan"]];
-    [_items addObject:[[Item alloc] initWithImageUrl:@"China.png"
-                                               jname:@"中国"
-                                               ename:@"China"]];
-    [_items addObject:[[Item alloc] initWithImageUrl:@"USA.png"
-                                               jname:@"アメリカ"
-                                               ename:@"America"]];
-    [_items addObject:[[Item alloc] initWithImageUrl:@"England.png"
-                                               jname:@"イギリス"
-                                               ename:@"England"]];
-    [_items addObject:[[Item alloc] initWithImageUrl:@"France.png"
-                                               jname:@"フランス"
-                                               ename:@"France"]];
+    
+    [_items addObject:[[Item alloc] initWithImageUrl:@"Japan.png" jname:@"日本" ename:@"Japan"]];
+    [_items addObject:[[Item alloc] initWithImageUrl:@"China.png" jname:@"中国" ename:@"China"]];
+    [_items addObject:[[Item alloc] initWithImageUrl:@"USA.png" jname:@"アメリカ" ename:@"America"]];
+    [_items addObject:[[Item alloc] initWithImageUrl:@"England.png" jname:@"イギリス" ename:@"England"]];
+    [_items addObject:[[Item alloc] initWithImageUrl:@"France.png" jname:@"フランス" ename:@"France"]];
     
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -77,14 +63,12 @@ static NSString* BASE_URL = @"https://kiroru-inc.jp/share/scc2017/";
     return 1;
 }
 
-- (NSInteger)   tableView:(UITableView *)tableView
-    numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _items.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell"];
     
@@ -102,8 +86,7 @@ static NSString* BASE_URL = @"https://kiroru-inc.jp/share/scc2017/";
     return cell;
 }
 
-- (CGFloat)     tableView:(UITableView *)tableView
-  heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80.0;
 }

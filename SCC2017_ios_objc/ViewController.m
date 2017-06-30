@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "DetailViewController.h"
 
 @interface Item : NSObject
 @property (nonatomic, strong) NSString* imageUrl;
@@ -56,6 +57,17 @@ static NSString* BASE_URL = @"https://kiroru-inc.jp/share/scc2017/";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"detail"]) {
+        Item* item = _items[_tableView.indexPathForSelectedRow.row];
+        DetailViewController* controller = segue.destinationViewController;
+        controller.imageUrl = item.imageUrl;
+        controller.jname = item.jname;
+        controller.ename = item.ename;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
